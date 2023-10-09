@@ -165,7 +165,7 @@ module Dry
         text = template % tokens
 
         if full?
-          rule_name = messages.rule(rule, opts) || rule
+          rule_name = messages.rule(rule, **opts) || rule
           "#{rule_name} #{text}"
         else
           text

@@ -26,12 +26,12 @@ module Dry
 
     def self.Params(base = nil, **options, &block)
       klass = base ? Schema::Params.configure(Class.new(base)) : Schema::Params
-      Validation.Schema(klass, options, &block)
+      Validation.Schema(klass, **options, &block)
     end
 
     def self.JSON(base = Schema::JSON, **options, &block)
       klass = base ? Schema::JSON.configure(Class.new(base)) : Schema::JSON
-      Validation.Schema(klass, options, &block)
+      Validation.Schema(klass, **options, &block)
     end
   end
 end

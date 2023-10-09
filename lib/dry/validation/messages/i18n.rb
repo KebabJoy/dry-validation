@@ -13,18 +13,18 @@ module Dry
         @t = I18n.method(:t)
       end
 
-      def get(key, options = {})
-        t.(key, options) if key
+      def get(key, **options)
+        t.(key, **options) if key
       end
 
       def rule(name, options = {})
         path = "rules.#{name}"
-        get(path, options) if key?(path, options)
+        get(path, **options) if key?(path, **options)
       end
 
-      def key?(key, options)
+      def key?(key, **options)
         ::I18n.exists?(key, options.fetch(:locale, default_locale)) ||
-        ::I18n.exists?(key, I18n.default_locale)
+          ::I18n.exists?(key, I18n.default_locale)
       end
 
       def merge(path)

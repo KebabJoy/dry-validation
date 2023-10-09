@@ -54,15 +54,15 @@ module Dry
           @hash ||= config.hash
         end
 
-        def rule(name, options = {})
+        def rule(name, **options)
           path = "%{locale}.rules.#{name}"
-          get(path, options) if key?(path, options)
+          get(path, **options) if key?(path, **options)
         end
 
         def call(*args)
           cache.fetch_or_store(args.hash) do
             path, opts = lookup(*args)
-            get(path, opts) if path
+            get(path, **opts) if path
           end
         end
         alias_method :[], :call
@@ -81,7 +81,7 @@ module Dry
           opts = options.select { |k, _| !config.lookup_options.include?(k) }
 
           path = lookup_paths(tokens).detect do |key|
-            key?(key, opts) && get(key, opts).is_a?(String)
+            key?(key, **opts) && get(key, **opts).is_a?(String)
           end
 
           [path, opts]

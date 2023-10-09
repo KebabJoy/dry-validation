@@ -36,7 +36,7 @@ module Dry
       setting :type_specs, false
 
       def self.new(rules = config.rules, **options)
-        super(rules, default_options.merge(options))
+        super(rules, **default_options.merge(options))
       end
 
       def self.define(options = {}, &block)

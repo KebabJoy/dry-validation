@@ -64,7 +64,7 @@ module Dry
         if opt_vals.empty?
           klass.new
         else
-          klass.new(klass.config.rules, Hash[opt_keys.zip(opt_vals)])
+          klass.new(klass.config.rules, **Hash[opt_keys.zip(opt_vals)])
         end
       end
 

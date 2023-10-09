@@ -7,10 +7,12 @@ group :test do
   platform :mri do
     gem 'simplecov', require: false
   end
-  gem 'dry-monads', '>= 0.4.0', require: false
   gem 'dry-struct'
 end
+gem 'dry-monads'
 
+gem 'dry-logic', git: 'https://gitlab.overteam.ru/overteam/med/dry-logic.git', branch: 'release-0.5-r3'
+gem 'dry-types', git: 'https://gitlab.overteam.ru/overteam/med/dry-types.git', branch: 'release-0.14-r3'
 group :tools do
   gem 'pry-byebug', platform: :mri
   gem 'pry', platform: :jruby

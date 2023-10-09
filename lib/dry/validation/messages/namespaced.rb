@@ -11,12 +11,12 @@ module Dry
           @root = messages.root
         end
 
-        def key?(key, *args)
-          messages.key?(key, *args)
+        def key?(key, *, **opts)
+          messages.key?(key, **opts)
         end
 
-        def get(key, options = {})
-          messages.get(key, options)
+        def get(key, **options)
+          messages.get(key, **options)
         end
 
         def lookup_paths(tokens)
